@@ -10,7 +10,14 @@ export class ExerciseRouter
     {
         this.router = Router(); 
         this.exercise_controller = new ExerciseController();
-
-        this.router.get('/', this.exercise_controller.getAll);
+        
+        // full exercises list
+        this.router.get('/all/', this.exercise_controller.getAll);
+        // Movement details page
+        this.router.get('/details/:id', this.exercise_controller.getOneByID);
+        // Benchmark details page
+        this.router.get('/id/:id', this.exercise_controller.getNameDescByID);
+        // Benchmark page
+        this.router.get('/cat/:sub_category_id', this.exercise_controller.getAllBySubCat);
     }
 }

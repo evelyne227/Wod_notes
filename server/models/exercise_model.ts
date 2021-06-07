@@ -39,4 +39,37 @@ export class ExerciseModel
             });
         });
     };
+
+    public static async getOneByID(id: any)
+    {
+        return connect().then((conn) => 
+        {
+            return conn.query('SELECT name, video_link FROM Exercise WHERE id=?', id).then((results) =>
+            {
+                return results;
+            });
+        });
+    }
+
+    public static async getNameDescByID(id: any)
+    {
+        return connect().then((conn) => 
+        {
+            return conn.query('SELECT name, description FROM Exercise WHERE id=?', id).then((results) =>
+            {
+                return results;
+            });
+        });
+    }
+
+    public static async getAllBySubCat(sub_category_id: any)
+    {
+        return connect().then((conn) => 
+        {
+            return conn.query('SELECT * FROM Exercise WHERE sub_category_id=?', sub_category_id).then((results) =>
+            {
+                return results;
+            });
+        });
+    }
 }
