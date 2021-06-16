@@ -24,10 +24,10 @@ export class Exercise
 
 export class ExerciseModel
 {
-    constructor()
-    {
+    // constructor()
+    // {
 
-    }
+    // }
 
     public static async getAll()
     {

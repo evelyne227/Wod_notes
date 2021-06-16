@@ -25,10 +25,10 @@ export class DoneWorkout
 
 export class DoneWorkoutModel
 {
-    constructor()
-    {
+    // constructor()
+    // {
 
-    }
+    // }
 
     public static async getAllDoneWorkouts()
     {
@@ -46,6 +46,17 @@ export class DoneWorkoutModel
         return connect().then((conn) => 
         {
             return conn.query('SELECT Done_workout.date AS "Date", Category.name AS "Catégorie", Sub_category.name AS "Sous-Catégorie", Exercise.name AS "Exercice", Done_workout.result AS "Résultat" FROM Done_workout LEFT JOIN Exercise ON Exercise.id = Done_workout.exercise_id LEFT JOIN Sub_category ON Sub_category.id = Exercise.sub_category_id LEFT JOIN Category ON Sub_category.category_id = Category.id').then((results) =>
+            {
+                return results;
+            });
+        });
+    };
+
+    public static async getDoneWorkoutsProgressByID(id: any)
+    {
+        return connect().then((conn) => 
+        {
+            return conn.query('SELECT Done_workout.date AS "Date", Done_workout.result AS "Résultat" FROM Done_workout WHERE exercise_id=?',id).then((results) =>
             {
                 return results;
             });

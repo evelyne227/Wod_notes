@@ -15,6 +15,8 @@ export class DoneWorkoutRouter
         this.router.get('/all/', this.done_workout_controller.getAllDoneWorkouts);
         // PR's page
         this.router.get('/list/', this.done_workout_controller.getDoneWorkoutsInfos);
+        // progress page
+        this.router.get('/list/:id', this.done_workout_controller.getDoneWorkoutsProgressByID);
         // new PR page
         this.router.post('/newPR/', this.done_workout_controller.insertPR);
     }

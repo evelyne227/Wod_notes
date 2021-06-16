@@ -18,6 +18,14 @@ export class DoneWorkoutController
         res.json(results);
     }
 
+    public async getDoneWorkoutsProgressByID(req: Request, res: Response, next: NextFunction)
+    {
+        // console.log('test');
+        // res.json({nom: "Evelyne"});
+        const results = await DoneWorkoutModel.getDoneWorkoutsProgressByID(req.params.id);
+        res.json(results);
+    }
+
     public async getDoneWorkoutsInfos(req: Request, res: Response, next: NextFunction)
     {
         // console.log('test');

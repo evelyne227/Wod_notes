@@ -2,6 +2,7 @@ import express, { Router } from 'express';
 import { ExerciseRouter } from './routers/exercise_router';
 import { DoneWorkoutRouter } from './routers/done_workout_router';
 import { WodPersoRouter } from './routers/wod_perso_router';
+import { UserRouter } from './routers/user_router';
 
 export class Server
 {
@@ -23,6 +24,7 @@ export class Server
         this.app.use('/api/benchmarks', new ExerciseRouter().router);
         this.app.use('/api/prs', new DoneWorkoutRouter().router);
         this.app.use('/api/mes-wods', new WodPersoRouter().router);
+        this.app.use('/api/users', new UserRouter().router);
     }
 
     public start()

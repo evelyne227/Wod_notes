@@ -25,10 +25,10 @@ export class WodPerso
 
 export class WodPersoModel
 {
-    constructor()
-    {
+    // constructor()
+    // {
 
-    }
+    // }
 
     public static async getAllWodPerso()
     {
