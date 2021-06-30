@@ -8,6 +8,9 @@ export class DoneWorkout
     result: number; 
     comment: string;
     exercise_id: string;
+    exercise_name: string;
+    category_name: string;
+    sub_category_name: string;
     wod_perso: number;
     user_id: number;
 
@@ -18,6 +21,9 @@ export class DoneWorkout
         this.result = data.result;
         this.comment = data.comment;
         this.exercise_id = data.exercise_id;
+        this.exercise_name = data.exercise_name;
+        this.category_name = data.category_name;
+        this.sub_category_name = data.sub_category_name;
         this.wod_perso = data.wod_perso;
         this.user_id = data.user_id;
     }
@@ -45,7 +51,7 @@ export class DoneWorkoutModel
     {
         return connect().then((conn) => 
         {
-            return conn.query('SELECT Done_workout.date AS "Date", Category.name AS "Catégorie", Sub_category.name AS "Sous-Catégorie", Exercise.name AS "Exercice", Done_workout.result AS "Résultat" FROM Done_workout LEFT JOIN Exercise ON Exercise.id = Done_workout.exercise_id LEFT JOIN Sub_category ON Sub_category.id = Exercise.sub_category_id LEFT JOIN Category ON Sub_category.category_id = Category.id').then((results) =>
+            return conn.query('SELECT Done_workout.date, Category.name AS "category_name", Sub_category.name AS "sub_category_name", Exercise.name AS "exercise_name", Done_workout.result FROM Done_workout LEFT JOIN Exercise ON Exercise.id = Done_workout.exercise_id LEFT JOIN Sub_category ON Sub_category.id = Exercise.sub_category_id LEFT JOIN Category ON Sub_category.category_id = Category.id').then((results) =>
             {
                 return results;
             });

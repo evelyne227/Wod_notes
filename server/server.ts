@@ -3,6 +3,7 @@ import { ExerciseRouter } from './routers/exercise_router';
 import { DoneWorkoutRouter } from './routers/done_workout_router';
 import { WodPersoRouter } from './routers/wod_perso_router';
 import { UserRouter } from './routers/user_router';
+import cors from 'cors';
 
 export class Server
 {
@@ -12,6 +13,7 @@ export class Server
     {
         //create app
         this.app = express();
+        this.app.use(cors());
         // bodyparser
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended: false}));

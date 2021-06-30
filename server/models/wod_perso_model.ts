@@ -8,6 +8,7 @@ export class WodPerso
     created_at: Date; 
     category_id: number;
     unit_id: number;
+    unit_name: string;
     user_id: number;
     description: string;
 
@@ -18,6 +19,7 @@ export class WodPerso
         this.created_at = data.created_at;
         this.category_id = data.category_id;
         this.unit_id = data.unit_id;
+        this.unit_name = data.unit_name;
         this.user_id = data.user_id;
         this.description = data.description;
     }
@@ -34,7 +36,7 @@ export class WodPersoModel
     {
         return connect().then((conn) => 
         {
-            return conn.query('SELECT Wod_perso.name AS "nom", Wod_perso.description AS "description", Unit.name AS "Unité de mesure" from Wod_Perso LEFT JOIN Unit ON Wod_perso.unit_id = Unit.id').then((results) =>
+            return conn.query('SELECT Wod_perso.created_at, Wod_perso.name AS name, Wod_perso.description, Unit.name AS "unit_name" from Wod_Perso LEFT JOIN Unit ON Wod_perso.unit_id = Unit.id').then((results) =>
             {
                 return results;
             });
